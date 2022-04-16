@@ -1,0 +1,225 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend+Deca&display=swap");
+/* ------------------------------------------------------------------------------ */
+/* Custom Props*/
+/* ------------------------------------------------------------------------------ */
+:root {
+  /* colors */
+  --blue-8: 233 47% 7%;
+  --blue-6: 244 38% 16%;
+  --violet-2: 277 64% 61%;
+  --white: 0 0% 100%;
+  /* fonts size */
+  --fs-5: 1rem;
+  --fs-6: 1.5rem;
+  --fs-7: 2rem;
+  /* Font family */
+  --ff-sans: "Inter", sans-serif;
+  --ff-serif: "Lexend Deca", sans-serif;
+}
+
+/* ------------------------------------------------------------------------------ */
+/* reset */
+/* ------------------------------------------------------------------------------ */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------------------------------ */
+/* General Utils */
+/* ------------------------------------------------------------------------------ */
+.flow > * + * {
+  margin-top: var(--flow-spacer-3, 1rem);
+}
+
+.flex {
+  display: flex;
+  gap: var(--spacer-3, 1rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--spacer-3, 1rem);
+}
+
+.container {
+  max-width: 80rem;
+  position: relative;
+  padding: var(--spacer-4, 1.5rem);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------------------ */
+/* Layout */
+/* ------------------------------------------------------------------------------ */
+body {
+  place-content: center;
+  color: hsl(var(--white));
+  background-color: hsl(var(--blue-8));
+  font-family: var(--ff-sans);
+  font-size: var(--fs-5);
+  font-weight: 400;
+}
+
+.card-container {
+  max-width: 70rem;
+  flex-direction: column-reverse;
+  flex-shrink: 1;
+  background-color: hsl(var(--blue-6));
+  border-radius: 10px;
+  /* overflow: hidden; */
+  margin: var(--spacer-3, 1rem);
+}
+
+.card-content {
+  place-content: center;
+  padding-inline: calc(2vw + 1.5rem);
+  /* align-items: center; */
+  text-align: center;
+}
+
+/* ------------------------------------------------------------------------------ */
+/* Component */
+/* ------------------------------------------------------------------------------ */
+.card-heading {
+  font-size: var(--fs-7);
+  font-weight: 700;
+}
+
+.card-heading__brand {
+  color: hsl(var(--violet-2));
+}
+
+.card-description {
+  font-family: var(--ff-serif);
+  font-size: var(--fs-5);
+  color: hsl(var(--white) / 0.75);
+}
+
+.card-stats {
+  flex-direction: column;
+  font-size: var(--fs-6);
+  font-weight: 700;
+}
+
+.card-stat__label {
+  display: block;
+  font-family: var(--ff-serif);
+  font-size: var(--fs-5);
+  font-weight: 400;
+  color: hsl(var(--white) / 0.6);
+}
+
+.card-img {
+  flex-shrink: 0;
+  position: relative;
+}
+
+.card-img > img {
+  border-radius: 10px 10px 0px 0px;
+}
+
+.card-img::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 10px 10px 0px 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: hsl(var(--violet-2) / 0.5);
+  z-index: 10;
+}
+
+@media (min-width: 376px) {
+  .card-content {
+    text-align: start;
+  }
+
+  .card-container,
+  .card-stats {
+    flex-direction: row;
+  }
+
+  .card-stats {
+    padding-top: var(--spacer-5, 3rem);
+  }
+
+  .card-img > img,
+  .card-img::after {
+    border-radius: 0px 10px 10px 0px;
+  }
+}
